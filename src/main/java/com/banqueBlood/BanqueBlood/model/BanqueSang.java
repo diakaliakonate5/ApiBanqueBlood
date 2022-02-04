@@ -25,7 +25,7 @@ public class BanqueSang {
     private  String email;
 
 
-@OneToMany
+    @OneToMany
     private List<Historique> historique;
 
 

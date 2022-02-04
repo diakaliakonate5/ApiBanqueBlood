@@ -1,5 +1,6 @@
 package com.banqueBlood.BanqueBlood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,9 +27,12 @@ public class Admin {
     @Column(nullable = false)
     private  String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "admin")
+    @JsonIgnore
     private List<Donneur> donneur;
-    @OneToMany
+
+    @OneToMany(mappedBy = "admin")
+    @JsonIgnore
     private List<Patient> patient;
 
 }

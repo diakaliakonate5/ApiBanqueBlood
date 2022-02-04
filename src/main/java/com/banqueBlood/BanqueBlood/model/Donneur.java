@@ -32,7 +32,7 @@ public class Donneur {
     private  Admin admin;
     @OneToMany
     private List<Quarantaine> quarantaine;
-    @OneToOne
+    @ManyToOne
     private GroupeSanguin groupeSanguin;
 
 }

@@ -1,9 +1,11 @@
 package com.banqueBlood.BanqueBlood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,12 +18,14 @@ public class GroupeSanguin{
     @Column(nullable = false)
     private String type;
 
-    @OneToOne
-    private Donneur donneur;
+    @OneToMany(mappedBy = "groupeSanguin")
+    @JsonIgnore
+    private List<Donneur> donneur;
 
 
-  @OneToOne
-    private  Patient patient;
+    @OneToMany(mappedBy = "groupeSanguin")
+    @JsonIgnore
+    private  List<Patient> patient;
 
 
 

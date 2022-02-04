@@ -17,14 +17,13 @@ public class AdminController {
         return  adminService.ajoutAdmin(admin);
     }
     @GetMapping("/listAdmins")
-    List<Admin> listAdmin(){
+    List<Admin> listAdmin()                  {
         return adminService.listAdmins();
     }
     @GetMapping("/ById/{id}")
     Admin AdminById(@PathVariable("id") Long id){
         return  adminService.admin(id);
     }
-
 
     @DeleteMapping("/deleteAdmin/{id}")
     void deleteAdmin(@PathVariable("id")Long id){

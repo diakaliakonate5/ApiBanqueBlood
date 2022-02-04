@@ -25,10 +25,13 @@ public class Patient {
     private  String email;
     @Column(nullable = false)
     private  String password;
-  @ManyToOne
-private Historique historique;
-  @ManyToOne
+
+    @ManyToOne
+    private Historique historique;
+
+    @ManyToOne
     private Admin admin;
-  @OneToOne
+
+    @ManyToOne
     private  GroupeSanguin groupeSanguin;
 }

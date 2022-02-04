@@ -1,5 +1,6 @@
 package com.banqueBlood.BanqueBlood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,9 +24,13 @@ public class Historique {
     private  String  lieu;
     @Column(nullable = false)
     private Boolean status;
-    @OneToMany
+
+    @OneToMany(mappedBy = "historique")
+    @JsonIgnore
     private List<Donneur> donneur;
-    @OneToMany
+
+    @OneToMany(mappedBy = "historique")
+    @JsonIgnore
     private  List<Patient> patient;
 
     public Long getId() {
