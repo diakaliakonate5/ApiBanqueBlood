@@ -1,16 +1,18 @@
 package com.banqueBlood.BanqueBlood.model;
 
 import com.banqueBlood.BanqueBlood.Profile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 @Entity
 @NoArgsConstructor
 
-public class Donneur {
+public class Donneur  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
@@ -27,12 +29,13 @@ public class Donneur {
     @Column(nullable = false)
     private  String password;
 
-    @ManyToOne
-    private  Historique historique;
+    @OneToMany(mappedBy = "donneur")
+    @JsonIgnore
+    private  List<Historique> historique;
     @ManyToOne
     private  Admin admin;
-    @OneToMany
-    private List<Quarantaine> quarantaine;
+    @OneToOne(mappedBy = "donneur")
+    private Quarantaine quarantaine;
     @ManyToOne
     private GroupeSanguin groupeSanguin;
 
@@ -92,11 +95,11 @@ public class Donneur {
         this.password = password;
     }
 
-    public Historique getHistorique() {
+    public List<Historique> getHistorique() {
         return historique;
     }
 
-    public void setHistorique(Historique historique) {
+    public void setHistorique(List<Historique> historique) {
         this.historique = historique;
     }
 
@@ -108,11 +111,11 @@ public class Donneur {
         this.admin = admin;
     }
 
-    public List<Quarantaine> getQuarantaine() {
+    public Quarantaine getQuarantaine() {
         return quarantaine;
     }
 
-    public void setQuarantaine(List<Quarantaine> quarantaine) {
+    public void setQuarantaine(Quarantaine quarantaine) {
         this.quarantaine = quarantaine;
     }
 
@@ -124,17 +127,5 @@ public class Donneur {
         this.groupeSanguin = groupeSanguin;
     }
 
-    public Donneur(Long id, String nomComplet, String adresse, Profile profile, String telephone, String email, String password, Historique historique, Admin admin, List<Quarantaine> quarantaine, GroupeSanguin groupeSanguin) {
-        this.id = id;
-        this.nomComplet = nomComplet;
-        this.adresse = adresse;
-        this.profile = profile;
-        this.telephone = telephone;
-        this.email = email;
-        this.password = password;
-        this.historique = historique;
-        this.admin = admin;
-        this.quarantaine = quarantaine;
-        this.groupeSanguin = groupeSanguin;
-    }
+
 }

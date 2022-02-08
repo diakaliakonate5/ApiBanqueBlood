@@ -2,12 +2,14 @@ package com.banqueBlood.BanqueBlood.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 @Data
+@NoArgsConstructor
 @Entity
 public class Historique {
     @Id
@@ -25,13 +27,11 @@ public class Historique {
     @Column(nullable = false)
     private Boolean status;
 
-    @OneToMany(mappedBy = "historique")
-    @JsonIgnore
-    private List<Donneur> donneur;
+    @ManyToOne
+    private Donneur donneur;
 
-    @OneToMany(mappedBy = "historique")
-    @JsonIgnore
-    private  List<Patient> patient;
+    @ManyToOne
+    private  Patient patient;
 
     public Long getId() {
         return id;

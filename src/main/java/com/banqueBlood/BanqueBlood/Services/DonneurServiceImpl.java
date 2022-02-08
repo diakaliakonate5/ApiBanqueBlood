@@ -47,7 +47,7 @@ public class DonneurServiceImpl implements DonneurService {
     }
 
     @Override
-    public Optional<Donneur> login(int telephone, String password) {
+    public Donneur login(String telephone, String password) {
         return donneurRepository.findByTelephoneAndPassword(telephone, password);
     }
 

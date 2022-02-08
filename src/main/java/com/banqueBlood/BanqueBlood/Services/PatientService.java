@@ -1,4 +1,5 @@
 package com.banqueBlood.BanqueBlood.Services;
+import com.banqueBlood.BanqueBlood.model.Donneur;
 import com.banqueBlood.BanqueBlood.model.Patient;
 import java.util.List;
 public interface PatientService {
@@ -7,4 +8,5 @@ public interface PatientService {
     Patient afficherbyid(Long id);
     Patient modifier(Patient patient , Long id);
     void suprimer(Long id);
+    Patient login(String telephone, String password);
 }

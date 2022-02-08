@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
+@CrossOrigin
 @RequestMapping("/Patient")
 public class PatientController {
     @Autowired
@@ -33,6 +34,10 @@ public class PatientController {
     @PutMapping("/modifierPatient/{id}")
     Patient modifierPatient(@PathVariable("id")Long id, @RequestBody Patient patient){
         return patientService.modifier(patient, id);
+    }
+    @GetMapping("/login/{telephone}/{password}")
+    public Patient login (@PathVariable String telephone, @PathVariable String password){
+        return  patientService.login(telephone, password);
     }
 
 }

@@ -11,5 +11,5 @@ public interface DonneurService {
     Donneur afficherbyid(Long id);
     Donneur modifier(Donneur donneur , Long id);
     void suprimer(Long id);
-    Optional<Donneur> login(int telephone, String password);
+    Donneur login(String telephone, String password);
 }

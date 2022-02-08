@@ -42,4 +42,9 @@ public class PatientServiceImpl implements PatientService {
         patientRepository.deleteById(id);
 
     }
+
+    @Override
+    public Patient login(String telephone, String password) {
+       return   patientRepository.findByTelephoneAndPassword(telephone,password);
+    }
 }

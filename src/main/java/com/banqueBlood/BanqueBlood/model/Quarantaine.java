@@ -22,7 +22,7 @@ public class Quarantaine {
     private LocalDate datedebut = LocalDate.now();
 
 
-    @ManyToOne
+    @OneToOne
     private  Donneur donneur;
 
 

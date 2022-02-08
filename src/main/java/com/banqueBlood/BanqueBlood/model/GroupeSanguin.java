@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 
-public class GroupeSanguin  {
+public class GroupeSanguin implements  Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
