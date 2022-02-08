@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 
 public class DonneurServiceImpl implements DonneurService {
@@ -42,6 +44,11 @@ public class DonneurServiceImpl implements DonneurService {
     @Override
     public void suprimer(Long id) {
         donneurRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Donneur> login(int telephone, String password) {
+        return donneurRepository.findByTelephoneAndPassword(telephone, password);
     }
 
 }

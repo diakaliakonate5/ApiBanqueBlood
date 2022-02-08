@@ -1,5 +1,6 @@
 package com.banqueBlood.BanqueBlood.model;
 
+import com.banqueBlood.BanqueBlood.Profile;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,7 @@ public class Patient {
     private  String email;
     @Column(nullable = false)
     private  String password;
-
+private Profile profile;
     @ManyToOne
     private Historique historique;
 
@@ -34,4 +35,5 @@ public class Patient {
 
     @ManyToOne
     private  GroupeSanguin groupeSanguin;
+
 }

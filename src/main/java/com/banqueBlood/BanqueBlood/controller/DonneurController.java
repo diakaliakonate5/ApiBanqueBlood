@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+@CrossOrigin
 @RestController
 @RequestMapping("/Donneur")
 public class DonneurController {
@@ -32,4 +34,8 @@ public class DonneurController {
         return donneurService.modifier(donneur, id);
     }
 
+    @GetMapping("/login?telephone={telephone}&password={password}")
+    public Optional<Donneur> login (@RequestParam int telephone, @RequestParam String password){
+        return  donneurService.login(telephone, password);
+    }
 }
